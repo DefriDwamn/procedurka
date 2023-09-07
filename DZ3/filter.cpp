@@ -4,9 +4,8 @@
 
 int main() {
   std::fstream fs("file.txt", std::fstream::out);
-  std::string s;
 
-  fs << "Работа с файлами в С++";
+  fs << "Abc1de\n123\naba42blk5ja6b\n78";
 
   fs.close();
 
@@ -15,7 +14,15 @@ int main() {
     std::cout << "File is not open\n";
     return 0;
   }
-  while (getline(fs, s)) {
-    std::cout << s << '\n';
+  char ch;
+  bool prevN = false;
+  while (fs.get(ch)) {
+    int n = ch - '0';
+    if (n >= 0 && n <= 9) {
+      std::cout << n << (prevN ? '-' : ' ');
+      prevN = true;
+    } else {
+      prevN = false;
+    }
   }
 }
