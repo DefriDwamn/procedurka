@@ -4,6 +4,7 @@
 int main() {
   std::string ans;
   bool morning, shtor, lamp;
+
   std::cout << "На улице день? (yes - если да) ";
   std::cin >> ans;
   morning = (ans == "yes" ? true : false);

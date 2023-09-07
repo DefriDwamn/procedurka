@@ -11,6 +11,7 @@ void linear(double& b, double& c) {
 
 void quadratic(double& a, double& b, double& c) {
   double D = (b * b) - (4 * a * c);
+
   if (D > 0) {
     double sqrtD = sqrt(D);
     std::cout << "x1 = " << ((-b) + sqrtD) / (2.0 * a) << '\n';
@@ -24,7 +25,9 @@ void quadratic(double& a, double& b, double& c) {
 
 int main() {
   double a, b, c;
+
   std::cin >> a >> b >> c;
+
   if (a == 0) {
     linear(b, c);
   } else {
