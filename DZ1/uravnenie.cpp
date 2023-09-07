@@ -4,6 +4,7 @@
 int main() {
   double b, c;
 
+  std::cout << "Введите b, c: ";
   std::cin >> b >> c;
 
   if (b == 0)

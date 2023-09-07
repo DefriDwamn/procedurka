@@ -26,6 +26,7 @@ void quadratic(double& a, double& b, double& c) {
 int main() {
   double a, b, c;
 
+  std::cout << "Введите a, b, c: ";
   std::cin >> a >> b >> c;
 
   if (a == 0) {

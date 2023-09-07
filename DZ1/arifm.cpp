@@ -4,6 +4,7 @@
 int main() {
   double a, b;
 
+  std::cout << "Введите a, b: ";
   std::cin >> a >> b;
   std::cout << a + b << '\n' << a - b << '\n' << a * b << '\n';
 
