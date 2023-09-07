@@ -4,7 +4,7 @@
 
 void linear(double& b, double& c) {
   if (b == 0)
-    std::cout << (c == 0 ? "x = 0\n" : "no solution\n");
+    std::cout << (c == 0 ? "x: infinite nums of solutions\n" : "no solution\n");
   else
     std::cout << "x = " << ((-c) / b) << '\n';
 }
@@ -26,7 +26,7 @@ void quadratic(double& a, double& b, double& c) {
 int main() {
   double a, b, c;
 
-  std::cout << "Введите a, b, c: ";
+std::cout << "Введите a, b, c: ";
   std::cin >> a >> b >> c;
 
   if (a == 0) {
