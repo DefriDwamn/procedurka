@@ -7,7 +7,7 @@ int main() {
   int num, sum = 0;
 
   std::cout << "Введите 10 чисел\n";
-  for (short i = 0; i != 10; ++i) {
+  for (int i = 0; i != 10; ++i) {
     std::cout << (i + 1) << ": ";
     std::cin >> num;
     fs << num << '\n';
@@ -19,6 +19,7 @@ int main() {
     std::cout << "File is not open\n";
     return 0;
   }
+  fs.close();
 
   while (fs >> num) sum += num;
   std::cout << sum << '\n';
