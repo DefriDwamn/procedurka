@@ -5,7 +5,7 @@
 int main() {
   std::fstream fs("file.txt", std::fstream::out);
 
-  fs << "Abc1de\n123\naba42blk5ja6b\n78";
+  fs << "Abc1de\n123\naba42b52987523lk5ja6b\n78";
 
   fs.close();
 
@@ -16,10 +16,9 @@ int main() {
   }
 
   char ch;
-  std::string nums = "0123456789";
   bool prevNum = false;
   while (fs.get(ch)) {
-    if (nums.find(ch) != std::string::npos) {
+    if (((ch - '0') <= 9) && ch != '\n') {
       std::cout << (prevNum ? '\0' : ' ') << ch;
       prevNum = true;
     } else {
