@@ -32,7 +32,7 @@ int main() {
   if (a == 0) {
     linear(b, c);
   } else {
-    if ((a > 0 && b == 0 && c > 0) || (a < 0 && b == 0 && c < 0)) {
+    if (b == 0 && ((a > 0 && c > 0) || (a < 0 && c < 0))) {
       std::cout << "only complex nums solution\n";
     } else {
       quadratic(a, b, c);
