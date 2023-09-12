@@ -14,15 +14,16 @@ int main() {
     std::cout << "File is not open\n";
     return 0;
   }
+
   char ch;
-  bool prevN = false;
+  std::string nums = "0123456789";
+  bool prevNum = false;
   while (fs.get(ch)) {
-    int n = ch - '0';
-    if (n >= 0 && n <= 9) {
-      std::cout << n << (prevN ? '-' : ' ');
-      prevN = true;
+    if (nums.find(ch) != std::string::npos) {
+      std::cout << (prevNum ? '\0' : ' ') << ch;
+      prevNum = true;
     } else {
-      prevN = false;
+      prevNum = false;
     }
   }
 }
