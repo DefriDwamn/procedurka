@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <utility>
+#include <vector>
 
 int main() {
   std::pair<std::string, bool> quests[3] = {
