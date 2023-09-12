@@ -12,7 +12,7 @@ int main() {
 
   if (absX < 1) {
     if (absX > 0) {
-      std::cout << a * std::log(absX) << '\n';
+      std::cout << "w = " << a * std::log(absX) << '\n';
     } else {
       std::cout << "no solution\n";
     }
