@@ -1,22 +1,21 @@
 #include <iostream>
 #include <string>
+#include <utility>
 
 int main() {
-  std::string ans;
-  bool morning, shtor, lamp;
+  std::pair<std::string, bool> quests[3] = {
+      {"На улице день? (1 - если да)", false},
+      {"Шторы раздвинуты?", false},
+      {"Лампа включена?", false}};
 
-  std::cout << "На улице день? (yes - если да) ";
-  std::cin >> ans;
-  morning = (ans == "yes" ? true : false);
+  for (auto& [quest, ans] : quests) {
+    std::cout << quest << ' ';
+    std::cin >> ans;
+  }
 
-  std::cout << "Шторы раздвинуты? ";
-  std::cin >> ans;
-  shtor = (ans == "yes" ? true : false);
-
-  std::cout << "Лампа включена? ";
-  std::cin >> ans;
-  lamp = (ans == "yes" ? true : false);
-
-  std::cout << ((lamp || (morning && shtor)) ? "В комнате светло\n"
-                                             : "В комнате не светло\n");
+  const bool& isMorning = quests[0].second;
+  const bool& isShtori = quests[1].second;
+  const bool& isLamp = quests[2].second;
+  std::cout << ((isLamp || (isMorning && isShtori)) ? "В комнате светло\n"
+                                                    : "В комнате не светло\n");
 }
