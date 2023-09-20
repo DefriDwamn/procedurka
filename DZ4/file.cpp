@@ -19,8 +19,9 @@ int main() {
     std::cout << "File is not open\n";
     return 0;
   }
-  fs.close();
 
   while (fs >> num) sum += num;
+  fs.close();
+
   std::cout << sum << '\n';
 }
