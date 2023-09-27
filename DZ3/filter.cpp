@@ -1,7 +1,7 @@
+#include <cctype>
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <cctype>
 
 int main() {
   std::fstream fs("file.txt", std::fstream::out);
@@ -15,12 +15,12 @@ int main() {
     std::cout << "File is not open\n";
     return 0;
   }
-
+  
   char ch;
   bool prevNum = false;
   while (fs.get(ch)) {
     if (std::isdigit(ch)) {
-      std::cout << (prevNum ? '\0' : ' ') << ch;
+      std::cout << (prevNum ? '\0' : '\n') << ch;
       prevNum = true;
     } else {
       prevNum = false;
