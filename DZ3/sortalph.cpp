@@ -13,7 +13,9 @@ void bubbleSort(std::string::iterator first, std::string::iterator last) {
     while (current != last) {
       auto next = current;
       ++next;
-      if (*next < *current) {
+      if ((std::tolower(*next) < std::tolower(*current)) ||
+          ((std::tolower(*next) == std::tolower(*current)) &&
+           *next < *current)) {
         std::iter_swap(current, next);
         swapped = true;
       }
@@ -24,7 +26,7 @@ void bubbleSort(std::string::iterator first, std::string::iterator last) {
 }
 
 int main() {
-  std::string s = "basdflzcytiybxxmfsdjxvkfsdaklf";
+  std::string s = "basdflzcytiybxxmfsdFFS   AFAFAFFBBjxvkfsdaklf";
   bubbleSort(s.begin(), s.end());
   std::cout << s;
 }

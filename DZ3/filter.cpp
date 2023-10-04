@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-
+using namespace std;
 int main() {
   std::fstream fs("file.txt", std::fstream::out);
 
@@ -15,15 +15,18 @@ int main() {
     std::cout << "File is not open\n";
     return 0;
   }
-  
+  std::string s;
   char ch;
-  bool prevNum = false;
+  bool previousIsNum = false;
   while (fs.get(ch)) {
-    if (std::isdigit(ch)) {
-      std::cout << (prevNum ? '\0' : '\n') << ch;
-      prevNum = true;
+    if (isdigit(ch)) {
+      if (!previousIsNum) {
+        cout << "\n";
+      }
+      cout << ch;
+      previousIsNum = true;
     } else {
-      prevNum = false;
+      previousIsNum = false;
     }
   }
 }
