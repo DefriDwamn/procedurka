@@ -55,25 +55,25 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam,
       return 0;
 
     case WM_PAINT: {
-      //   PAINTSTRUCT ps;
-      //   HDC hdc = BeginPaint(hwnd, &ps);
+      PAINTSTRUCT ps;
+      HDC hdc = BeginPaint(hwnd, &ps);
 
-      //   FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW));
+      FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW));
 
-      //   EndPaint(hwnd, &ps);
+      EndPaint(hwnd, &ps);
 
-      //   HDC hdc = GetDC(hwnd);
-      //   HPEN pen = CreatePen(0, 2, RGB(255, 255, 255));
-      //   SelectObject(hdc, pen);
-      //   MoveToEx(hdc, 0, 85, NULL);
-      //   LineTo(hdc, 200, 85);
-      //   MoveToEx(hdc, 100, 0, NULL);
-      //   LineTo(hdc, 100, 170);
-      //   for (float x = -8.0f; x <= 8.0f; x += 0.01f) {
-      //     MoveToEx(hdc, 10 * x + 100, -10 * std::sin(x) + 85, NULL);
-      //     LineTo(hdc, 10 * x + 100, -10 * std::sin(x) + 85);
-      //   }
-      //   ReleaseDC(hwnd, hdc);
+      HDC hdc = GetDC(hwnd);
+      HPEN pen = CreatePen(0, 2, RGB(255, 255, 255));
+      SelectObject(hdc, pen);
+      MoveToEx(hdc, 0, 85, NULL);
+      LineTo(hdc, 200, 85);
+      MoveToEx(hdc, 100, 0, NULL);
+      LineTo(hdc, 100, 170);
+      for (float x = -8.0f; x <= 8.0f; x += 0.01f) {
+        MoveToEx(hdc, 10 * x + 100, -10 * std::sin(x) + 85, NULL);
+        LineTo(hdc, 10 * x + 100, -10 * std::sin(x) + 85);
+      }
+      ReleaseDC(hwnd, hdc);
     }
       return 0;
   }
