@@ -1,11 +1,16 @@
+#include <windows.h>
 #include <iostream>
-#include <string>
+
+WINBOOL(*sct)
+(HANDLE hConsoleOutput, WORD wAttributes){SetConsoleTextAttribute};
 
 int main() {
-  for (int i = 0; i != 8; ++i) {
-    for (int j = 0; j != 35; ++j) {
-      std::cout << ((i < 4 && j < 8) ? '*' : '_');
-    }
-    std::cout << '\n';
-  }
+  HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+  sct(h, 0xFF);
+  std::cout << std::string(30, ' ') << '\n';
+  sct(h, 0x11);
+  std::cout << std::string(30, ' ') << '\n';
+  sct(h, 0x44);
+  std::cout << std::string(30, ' ');
+  sct(h, 0);
 }
