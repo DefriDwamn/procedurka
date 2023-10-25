@@ -6,7 +6,7 @@
 #include <string>
 #include <unordered_map>
 
-wchar_t* GenerateRandomLetter(size_t& count) {
+std::wstring GenerateRandomLetter(size_t& count) {
   if (count < 1) throw(L"Кол-во символов < 1");
 
   std::random_device randd;
@@ -14,9 +14,9 @@ wchar_t* GenerateRandomLetter(size_t& count) {
 
   std::uniform_int_distribution<> distrLetters;
 
-  wchar_t* randoms = new wchar_t[count];
+  std::wstring randoms;
+
   for (size_t i = 0; i != count; ++i) {
-    // random type of letter
     std::uniform_int_distribution<> distrType(0, 3);
     switch (distrType(gen)) {
       case 1:
@@ -37,29 +37,28 @@ wchar_t* GenerateRandomLetter(size_t& count) {
         break;
     }
 
-    randoms[i] = (wchar_t)distrLetters(gen);
+    randoms += static_cast<wchar_t>(distrLetters(gen));
   }
   return randoms;
 }
 
-bool findWchar(const wchar_t* arr, size_t& size, wchar_t toFind) {
-  for (size_t i = 0; i != size; ++i) {
-    if (arr[i] == toFind) return true;
+bool findWchar(const std::wstring ws, wchar_t toFind) {
+  for (auto it = ws.begin(); it != ws.end(); ++it) {
+    if (*it == toFind) return true;
   }
   return false;
 }
+
 int main() {
+  // ! : use only wcout(wcin) or cout(cin) in program
   // for clang compiler use this:
-  //std::wcout.imbue(std::locale("ru-RU.UTF-8"));
-  //std::wcin.imbue(std::locale("ru-RU.UTF-8"));
-
+  std::wcout.imbue(std::locale("ru-RU.UTF-8"));
+  std::wcin.imbue(std::locale("ru-RU.UTF-8"));
   // for msvc compiler use this:
-  setlocale(0, "");
+  // setlocale(0, "");
 
-  size_t countSymbols;
   std::unordered_map<wchar_t, int> freqs;
-  size_t glsSize = 33;
-  const wchar_t* gls{L"аеёиоуыэюяАЕЁИОУЫЭЮЯaeiouyAEIOUY"};
+  const std::wstring gls{L"аеёиоуыэюяАЕЁИОУЫЭЮЯaeiouyAEIOUY"};
 
   try {
     int type;
@@ -67,26 +66,25 @@ int main() {
         << L"Выберите режим:\n1.Вы уже создали file.txt и ввели свою строку из "
            L"букв\n2.Вы хотите сгенерировать рандомную строку из букв\n";
     std::wcin >> type;
+
     if (type == 2) {
-      // ! : use only wcout or cout(wcin cin) in program
+      size_t countSymbols;
       std::wcout << L"Введите кол-во символов в файле: ";
       std::wcin >> countSymbols;
 
-      wchar_t* symbols = GenerateRandomLetter(countSymbols);
+      std::wstring symbols = GenerateRandomLetter(countSymbols);
 
-      std::wfstream fs("file.txt", std::wfstream::out);
+      std::wofstream fs("file.txt");
       fs.imbue(std::locale("ru-RU.UTF-8"));
-      for (size_t i = 0; i != countSymbols; ++i) {
-        fs << symbols[i];
-      }
+      fs << symbols;
       fs.close();
     }
 
-    std::wfstream fs("file.txt", std::wfstream::in);
+    std::wifstream fs("file.txt");
     fs.imbue(std::locale("ru-RU.UTF-8"));
     wchar_t ch;
     while (fs >> ch) {
-      if (findWchar(gls, glsSize, ch)) ++freqs[ch];
+      if (findWchar(gls, ch)) ++freqs[ch];
     }
     fs.close();
   } catch (wchar_t const* e) {
