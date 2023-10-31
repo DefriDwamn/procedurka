@@ -51,10 +51,10 @@ bool findWchar(const std::wstring ws, wchar_t toFind) {
 
 int main() {
   // ! : use only wcout(wcin) or cout(cin) in program
-  // for clang compiler use this:
+  // with clang use this:
   std::wcout.imbue(std::locale("ru-RU.UTF-8"));
   std::wcin.imbue(std::locale("ru-RU.UTF-8"));
-  // for msvc compiler use this:
+  // with msvc use this:
   // setlocale(0, "");
 
   std::unordered_map<wchar_t, int> freqs;
