@@ -24,5 +24,5 @@ int main() {
   while (std::cin >> n) {
     seq.push_back(n);
   }
-  std::cout << "Кол-во уб. послед.: " << countDecrSeq(vec);
+  std::cout << "Кол-во уб. послед.: " << countDecrSeq(seq);
 }
