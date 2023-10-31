@@ -19,10 +19,10 @@ size_t countDecrSeq(std::vector<int>& seq) {
 
 int main() {
   std::cout << "Введите последовательность\n:";
-  std::vector<int> vec;
+  std::vector<int> seq;
   int n;
   while (std::cin >> n) {
-    vec.push_back(n);
+    seq.push_back(n);
   }
   std::cout << "Кол-во уб. послед.: " << countDecrSeq(vec);
 }
